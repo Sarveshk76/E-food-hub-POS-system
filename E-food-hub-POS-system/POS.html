@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <style>
+      *{
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        
+      }
+      
+      #totalorder li {
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+    </style>
+</head>
+<body>
+    <div id="topmenu" class="w-100 p-3 border" style="background-color: white;">
+        <button class="btn btn-outline-primary">New order</button>
+        <button class="btn btn-outline-primary">Order status</button>
+        <a href="#" class="btn btn-primary">Dashboard</a>
+        <h2 style="position: absolute; right: 500px; top: 15px;">E-food hub POS system</h2>
+        <img src="logo.png" height="50px" width="90px" style="position: absolute; right: 10px; top: 15px;">
+    </div>
+<div class="row mx-0">
+  <div id="sidemenu" class="p-3 col-md-2" style="background: rgb(228, 225, 225);"> 
+      <a href="#item1" class="btn btn-outline-primary m-1 w-100">Soup</a>
+      <a href="#item2" class="btn btn-outline-primary m-1 w-100">Starters</a>
+      <a href="#item3" class="btn btn-outline-primary m-1 w-100">Lunch and dinner</a>
+      <a href="#item4" class="btn btn-outline-primary m-1 w-100">Mushroom dishes</a>
+      <a href="#item5" class="btn btn-outline-primary m-1 w-100">Beverages</a>
+  </div>
+  <div class="col-md-6" style="padding-top: 10px; overflow-y: auto; height: 420px; ">
+    <div id="ordermenu" style="background: rgb(228, 225, 225); border-radius: 10px;">
+      <p id="item1">Soup</p>
+      <div class="row row-cols-1 row-cols-md-2 g-4 p-3">
+        <div class="col" onclick="addOrder(1,'Cream of Tomato Soup',80.00)">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Cream of tomato soup</h5>
+              <p class="card-text">80.00 Rs</p>
+            </div>
+          </div>
+        </div>
+        <div class="col" onclick="addOrder(2,'Cream of Mushroom Soup',90.00)">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Cream of Mushroom soup</h5>
+                <p class="card-text">90.00</p>
+              </div>
+            </div>
+          </div>
+          <div class="col" onclick="addOrder(3,'Cream of Vegetable Soup',80.00)">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Cream of Vegetable soup</h5>
+                <p class="card-text">80.00</p>
+              </div>
+            </div>
+          </div>
+          <div class="col" onclick="addOrder(4,'Veg. Clear Soup',80.00)">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Veg. clear soup</h5>
+                <p class="card-text">80.00</p>
+              </div>
+            </div>
+          </div>
+          <div class="col" onclick="addOrder(5,'Veg. Sweet Corn Soup',85.00)">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Veg. Sweet Corn Soup</h5>
+                <p class="card-text">85.00</p>
+              </div>
+            </div>
+          </div>
+          <div class="col" onclick="addOrder(6,'Veg. Hot`n`Sour Soup',85.00)">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Veg. Hot`n`Sour Soup</h5>
+                <p class="card-text">85.00</p>
+              </div>
+            </div>
+          </div>
+      </div>
+      <p id="item2">Starters</p>
+      <div class="row row-cols-1 row-cols-md-2 g-4 p-3">
+        <div class="col" onclick="addOrder(7,'Paneer Tikka',250)">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Paneer Tikka</h5>
+              <p class="card-text">250 Rs</p>
+            </div>
+          </div>
+        </div>
+        <div class="col" onclick="addOrder(8,'Paneer Achari Tikka',250)">
+           <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Paneer Achari Tikka</h5>
+                <p class="card-text">250</p>
+              </div>
+            </div>
+        </div>
+        <div class="col" onclick="addOrder(9,'Paneer Malai Kabab',250)">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Paneer Malai Kabab</h5>
+                <p class="card-text">250</p>
+              </div>
+            </div>
+         </div>
+         <div class="col" onclick="addOrder(10,'Veg. Seekh Kabab',220)">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Veg. Seekh Kabab</h5>
+              <p class="card-text">220</p>
+            </div>
+          </div>
+       </div>
+       <div class="col" onclick="addOrder(11,'Veg. Manchurian',180)">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Veg. Manchurian</h5>
+            <p class="card-text">180</p>
+          </div>
+        </div>
+     </div>
+     <div class="col" onclick="addOrder(12,'Veg. Spring Roll',160)">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Veg. Spring Roll</h5>
+            <p class="card-text">160</p>
+          </div>
+        </div>
+      </div> 
+    </div>
+    <br>
+    <p id="item3">Lunch And Dinner</p>
+      <div class="row row-cols-1 row-cols-md-2 g-4 p-3">
+        <div class="col" onclick="addOrder(13,'Dal Tadka',150)">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Dal Tadka</h5>
+              <p class="card-text">150 Rs</p>
+            </div>
+          </div>
+        </div>
+        <div class="col" onclick="addOrder(14,'Dal Makhani',160)">
+           <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Dal Makhani</h5>
+                <p class="card-text">160</p>
+              </div>
+            </div>
+        </div>
+        <div class="col" onclick="addOrder(15,'Rajma',170)">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Rajma</h5>
+                <p class="card-text">170</p>
+              </div>
+            </div>
+         </div>
+         <div class="col" onclick="addOrder(16,'Pindi Channa',170)">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Pindi Channa</h5>
+              <p class="card-text">170</p>
+            </div>
+          </div>
+       </div>
+       <div class="col" onclick="addOrder(17,'Channa Paneer Masala',190)">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Channa Paneer Masala</h5>
+            <p class="card-text">190</p>
+          </div>
+        </div>
+     </div>
+     <div class="col" onclick="addOrder(18,'Shahi Paneer',220)">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Shahi Paneer</h5>
+          <p class="card-text">220</p>
+        </div>
+      </div>
+   </div> 
+  </div>
+  <br>
+  <p id="item4">Mushroom Dishes</p>
+      <div class="row row-cols-1 row-cols-md-2 g-4 p-3">
+        <div class="col" onclick="addOrder(19,'Mushroom Tikka',220)">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Mushroom Tikka</h5>
+              <p class="card-text">220 Rs</p>
+            </div>
+          </div>
+        </div>
+        <div class="col" onclick="addOrder(20,'Mushroom Mattar',210)">
+           <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Mushroom Mattar</h5>
+                <p class="card-text">210</p>
+              </div>
+            </div>
+        </div>
+        <div class="col" onclick="addOrder(21,'Mushroom Curry',210)">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Mushroom Curry</h5>
+                <p class="card-text">210</p>
+              </div>
+            </div>
+         </div>
+         <div class="col" onclick="addOrder(22,'Mushroom Masala',210)">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Mushroom Masala</h5>
+              <p class="card-text">210</p>
+            </div>
+          </div>
+       </div>
+       <div class="col" onclick="addOrder(23,'Karahi Mushroom',210)">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Karahi Mushroom</h5>
+            <p class="card-text">210</p>
+          </div>
+        </div>
+     </div>
+     <div class="col" onclick="addOrder(24,'Mushroom Paneer',220)">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Mushroom Paneer</h5>
+          <p class="card-text">220</p>
+        </div>
+      </div>
+   </div> 
+      </div>
+  </div>
+</div>
+  <div  class="col-md-4 bg-light p-3 " >
+    <div class="card-body border bg-white" >  
+      <button onclick="removeOrders()" class="btn btn-sm bg-danger" >Clear</button>
+    </div>
+      <div id="orderlist" style="overflow-y: auto; height: 300px; "></div>
+      <div class="card-body bg-white border-md-3" > 
+        <ul id="totalorder">
+          <li>Total Products: <span id="totalproducts"></span></li>
+          <li>Total Amount: <span id="totalbalance"></span></li>
+          <br>
+          <a href="checkout.html" class="btn btn-primary btn-lg" >Check out</a>
+        </ul>
+      </div>  
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+<script>
+    const productIdArray = [];
+    const priceArray = [];
+    const productArray = [];
+    
+    function addOrder(id, product, price){
+        productIdArray.push(id);
+        priceArray.push(price);
+        productArray.push(product);
+
+        const orderList = document.getElementById('orderlist');
+        console.log(priceArray);
+
+        const card = document.createElement('div');
+        card.className = 'card mb-1';
+        card.id = 'card';
+
+        const cardbody =  document.createElement('div');
+        cardbody.className = 'card-body';
+
+        const h5title = document.createElement('p');
+        h5title.innerText=product;
+        h5title.className = 'card-title';
+        
+
+        const ptext = document.createElement('p');
+        ptext.innerText=price;
+        ptext.className = 'card-text';
+        ptext.style = 'position: absolute; right: 60px; bottom: 10px;';
+
+        const butt = document.createElement('button');
+        const butttext = document.createTextNode('X');
+
+        butt.setAttribute('onclick','deleteItem('+id+',this)');
+        butt.appendChild(butttext);
+        butt.className = 'btn btn-danger';
+        butt.style = 'position: absolute; right: 10px; bottom: 15px;';  
+
+        orderList.appendChild(card);
+        card.appendChild(cardbody);
+        cardbody.appendChild(h5title);
+        cardbody.appendChild(ptext);
+        cardbody.appendChild(butt);
+        console.log(productArray);
+        totalProductOrders();
+        totalBalanceOrder();
+
+        localStorage.setItem("productIdArray", JSON.stringify(productIdArray));
+        localStorage.setItem("productArray", JSON.stringify(productArray));
+        localStorage.setItem("priceArray", JSON.stringify(priceArray));    
+        
+      }
+    function totalProductOrders(){
+        totalProducts = document.getElementById('totalproducts');
+        totalProducts.innerText = productArray.length;
+        localStorage.setItem("totalproducts", JSON.stringify(totalProducts.innerText));
+    }
+    function totalBalanceOrder(){
+        totalBalance = document.getElementById('totalbalance');
+        totalBalance.innerText =  priceArray.reduce((total, price) => total+price);
+        localStorage.setItem("totalBalance", JSON.stringify(totalBalance.innerText));
+    }
+    function removeOrders(){
+      
+      productIdArray.length = 0;
+      priceArray.length = 0;
+      productArray.length = 0;
+      document.getElementById('orderlist').innerText = '';
+      document.getElementById('totalproducts').innerText = '';
+      document.getElementById('totalbalance').innerText = '';
+      totalProductOrders();
+      
+      totalBalanceOrder();
+    }
+    function deleteItem(id,price,button){
+      const Index = productIdArray.indexOf(id);
+      
+      productIdArray.splice(Index,1);
+      productArray.splice(Index,1);
+      priceArray.splice(Index,1);
+      orderlist.removeChild(orderlist.lastElementChild);
+      productArray.length-1;
+      console.log(priceArray);
+      if(priceArray.length==0){
+        totalBalance.innerText=0;
+      }
+      totalProductOrders();
+      totalBalanceOrder();
+
+    }
+    
+</script>
+</body>
+</html>
